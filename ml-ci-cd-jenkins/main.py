@@ -44,7 +44,7 @@ def index():
 
 @app.post("/prediction_api")
 def predict(loan_details: LoanPrediction):
-    data = loan_details.model_dump()
+    data = loan_details.model_dump() # This will convert the input data into a dict using Pydantic lib
     prediction = generate_predictions([data])["prediction"][0]
     if prediction == "Y":
         pred = "Approved"
